@@ -1,73 +1,374 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>I LOVE YOU</title>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Short+Stack&amp;family=Homemade+Apple&amp;display=swap'>
-  <link rel="stylesheet" href="card.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<style>
-  body {
-      margin: 0;
-      overflow: hidden;
- 
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -1;
-    }
-    
-    content {
-      z-index: 1;
-    }
+    <title>I LOVE YOU ❤️</title>
 
-    
-  </style>
-</head>
-<body>
-  <video autoplay loop controls >
-    <source src="video/video1.mp4" type="video/mp4">
-  </video>
-  <div id="lyrics"></div>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <div class="content">
-    <h1></h1>
-    
-  </div>
-</body>
-</style>
-<body>
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <div class="paper image">
-    <p>my heart</p>
-    <img src="gambar/gambar4.jpg" />
-  </div>
+    <!-- CSS -->
+    <link rel="stylesheet" href="card.css" />
 
-  <div class="paper image">
-    <p>off</p>
-    <img src="gambar/gambar3.jpg" />
-  </div>
-  <div class="paper image">
-    <p>shape</p>
-    <img src="gambar/gambar6.jpg" />
-  </div>
-  <div class="paper image">
-    <p>the</p>
-    <img src="gambar/gambar1.jpg" />
-  </div>
+    <style>
+      /* =====================================================
+       VIDEO BACKGROUND
+       TETAP CERAH SEPERTI AWAL
+    ===================================================== */
 
- 
+      video {
+        position: fixed;
 
-  <script  src="card.js"></script>
-</body>
+        top: 50%;
+        left: 50%;
+
+        min-width: 100%;
+        min-height: 100%;
+
+        width: auto;
+        height: auto;
+
+        transform: translate(-50%, -50%);
+
+        object-fit: cover;
+
+        z-index: -1;
+      }
+
+      /* =====================================================
+       START OVERLAY
+       TRANSPARAN - TIDAK MENGGELAPKAN VIDEO
+    ===================================================== */
+
+      #start-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        z-index: 9999;
+
+        background: transparent;
+
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s ease;
+      }
+
+      #start-overlay.hide {
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+      }
+
+      /* =====================================================
+       LOVE CONTAINER
+    ===================================================== */
+
+      .love-container {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+      }
+
+      /* =====================================================
+       HEART BUTTON
+    ===================================================== */
+
+      #start-button {
+        width: 120px;
+        height: 120px;
+
+        border-radius: 50%;
+
+        border: 2px solid rgba(255, 255, 255, 0.85);
+
+        background: rgba(255, 255, 255, 0.15);
+
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+
+        color: white;
+
+        font-size: 58px;
+
+        cursor: pointer;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        box-shadow:
+          0 0 20px rgba(255, 255, 255, 0.5),
+          0 0 45px rgba(255, 255, 255, 0.3);
+
+        animation: floatingHeart 2s ease-in-out infinite;
+
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      #start-button:hover {
+        transform: scale(1.1);
+
+        background: rgba(255, 255, 255, 0.25);
+
+        box-shadow:
+          0 0 25px rgba(255, 255, 255, 0.7),
+          0 0 60px rgba(255, 255, 255, 0.4);
+      }
+
+      #start-button:active {
+        transform: scale(0.95);
+      }
+
+      /* =====================================================
+       HEART ANIMATION
+    ===================================================== */
+
+      @keyframes floatingHeart {
+        0% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      /* =====================================================
+       START TITLE
+    ===================================================== */
+
+      .start-title {
+        margin-top: 22px;
+
+        color: white;
+
+        font-family: "Poppins", sans-serif;
+
+        font-size: 23px;
+
+        font-weight: 500;
+
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      }
+
+      /* =====================================================
+       START SUBTITLE
+    ===================================================== */
+
+      .start-subtitle {
+        margin-top: 7px;
+
+        color: white;
+
+        font-family: "Poppins", sans-serif;
+
+        font-size: 14px;
+
+        font-weight: 300;
+
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+      }
+
+      /* =====================================================
+       MOBILE
+    ===================================================== */
+
+      @media (max-width: 768px) {
+        #start-button {
+          width: 100px;
+          height: 100px;
+
+          font-size: 48px;
+        }
+
+        .start-title {
+          font-size: 20px;
+        }
+
+        .start-subtitle {
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        #start-button {
+          width: 90px;
+          height: 90px;
+
+          font-size: 42px;
+        }
+
+        .start-title {
+          font-size: 18px;
+        }
+
+        .start-subtitle {
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =====================================================
+       BACKGROUND VIDEO
+  ===================================================== -->
+
+    <video id="bg-video" autoplay loop muted playsinline preload="auto">
+      <source src="video/video1.mp4" type="video/mp4" />
+
+      Browser kamu tidak mendukung video HTML5.
+    </video>
+
+    <!-- =====================================================
+       START BUTTON
+       TETAP SEPERTI YANG KAMU MAU
+  ===================================================== -->
+
+    <div id="start-overlay">
+      <div class="love-container">
+        <button id="start-button" onclick="startExperience()">❤️</button>
+
+        <div class="start-title">I have something for you...</div>
+
+        <div class="start-subtitle">Tap the heart ❤️</div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+       PAPER 1
+       TIDAK DIUBAH
+  ===================================================== -->
+
+    <div class="paper image">
+      <p>my heart</p>
+      <img src="gambar/gambar4.jpg" alt="my heart" />
+    </div>
+
+    <!-- =====================================================
+       PAPER 2
+       TIDAK DIUBAH
+  ===================================================== -->
+
+    <div class="paper image">
+      <p>off</p>
+      <img src="gambar/gambar3.jpg" alt="off" />
+    </div>
+
+    <!-- =====================================================
+       PAPER 3
+       TIDAK DIUBAH
+  ===================================================== -->
+
+    <div class="paper image">
+      <p>shape</p>
+      <img src="gambar/gambar6.jpg" alt="shape" />
+    </div>
+
+    <!-- =====================================================
+       PAPER 4
+       DIKEMBALIKAN: "the"
+  ===================================================== -->
+
+    <div class="paper image">
+      <p>the</p>
+      <img src="gambar/gambar1.jpg" alt="the" />
+    </div>
+
+    <!-- =====================================================
+       LYRICS
+  ===================================================== -->
+
+    <div id="lyrics"></div>
+
+    <!-- =====================================================
+       CARD JAVASCRIPT
+  ===================================================== -->
+
+    <script src="card.js"></script>
+
+    <!-- =====================================================
+       START EXPERIENCE SCRIPT
+  ===================================================== -->
+
+    <script>
+      const video = document.getElementById("bg-video");
+      const startOverlay = document.getElementById("start-overlay");
+
+      /* =====================================================
+       KETIKA TOMBOL ❤️ DIKLIK
+    ===================================================== */
+
+      function startExperience() {
+        // Aktifkan suara video
+        video.muted = false;
+
+        // Volume 80%
+        video.volume = 0.8;
+
+        // Jalankan video
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              console.log("Video berhasil dimainkan dengan suara.");
+            })
+            .catch((error) => {
+              console.error("Video gagal dimainkan:", error);
+            });
+        }
+
+        // Hilangkan tombol start
+        startOverlay.classList.add("hide");
+      }
+
+      /* =====================================================
+       AUTOPLAY MUTED
+       VIDEO TETAP BERJALAN SAAT AWAL
+    ===================================================== */
+
+      window.addEventListener("load", function () {
+        video.muted = true;
+
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            console.log("Autoplay diblokir browser.");
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
